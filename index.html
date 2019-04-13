@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang='en' class=''>
+    <head>
+
+        <meta charset='UTF-8'><meta name="Piolal" content="noindex">
+
+        <!--Necessary: little buttons at the left of the form-->
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+
+        <!-- Custom style sheet CSS-->
+        <link rel="stylesheet" type="text/css" href="index_style.css">
+</head>
+
+    <body>
+
+        <h1>Welcom to picolal</h1>
+        <h2>Just practising Javascript</h2>
+
+        <form>
+          <ul class="items"></ul>
+          <fieldset class="username enable">
+            <div class="icon left"><i class="user"></i></div>
+            <input type="text" name="username" placeholder="Username"/>
+            <div class="icon right button"><i class="arrow"></i></div>
+          </fieldset>
+
+
+          <fieldset class="email">
+            <div class="icon left"><i class="letter"></i></div>
+            <input type="mail" name="email" placeholder="Email"/>
+            <div class="icon right button"><i class="arrow"></i></div>
+          </fieldset>
+
+
+          <fieldset class="password">
+            <div class="icon left"><i class="lock"></i></div>
+            <input type="password" name="password" placeholder="Password"/>
+            <div class="icon right button"><i class="arrow"></i></div>
+          </fieldset>
+
+
+          <fieldset class="thanks">
+            <div class="icon left"><i class="heart"></i></div>
+            <p>Thanks for your time</p>
+            <div class="icon right"><i class="heart"></i></div>
+          </fieldset>
+        </form>
+
+        <!-- ........................Javascript management.......................................-->
+        <!-- Coockie management: sharing info between pages (player names, ...) -->
+        <script type="text/javascript" src="coockie.js" ></script> 
+        <!--Loading JS code managing interface -->
+        <script type="text/javascript" src="index.js" ></script> 
+
+        <!-- JS dedicated to current page -->
+        <script type="text/javascript">
+            var body = document.querySelector('body'),
+            form = document.querySelector('form'),
+            count = form.querySelectorAll('fieldset').length;
+
+            window.onload = init;
+            document.body.onmouseup = function (event) {
+              var target = event.target || event.toElement;
+              if (target.classList.contains("button")) next(target);
+            };
+            document.addEventListener("keydown", keyDown, false);
+        </script>
+
+        <!-- Add little ticks at the left of the selection pannel -->
+        <script src='https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js'></script>
+
+        </body>
+</html>
