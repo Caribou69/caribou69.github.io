@@ -1,4 +1,6 @@
 # Ignore these files
+git.exe.stackdump
+package-lock.json
 .idea/
 *.iml
 *.iws
