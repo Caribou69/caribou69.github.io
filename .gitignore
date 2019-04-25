@@ -1,0 +1,14 @@
+# Ignore these files
+.idea/
+*.iml
+*.iws
+*.eml
+out/
+.DS_Store
+.svn
+log/*.log
+tmp/**
+node_modules/
+.sass-cache
+reveal.js/css/reveal.min.css
+reveal.js/js/reveal.min.js

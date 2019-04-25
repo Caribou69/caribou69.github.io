@@ -1,37 +1,61 @@
 # Picolal
 A small proof of concept to produce a drinking game in js.
-This project was freely inspired by this [funny game](https://github.com/tiaanduplessis/dronk-expo).
+ \#DrinkingGame \#Reveal.js
 
+The slides are generated with the [Reveal.js framework](https://github.com/hakimel/reveal.js/).
 
+## Customize an element
+For customize an element, please, see the [CONTRIBUTING.md](contributing.md)
 
-# Work in progress
-This doc present the work done, and the TODOs.
+## How to begin ?
 
-*Note: The website was initially dedicated to french persons. (A traducing work have to be done later.)*
-*Note 2: I tried to make all code / docs in en. Only the website produced is in fr.(A traducing work have to be done 
-later.)* 
+### Full setup
+Because we are using `reveal.js` features (external Markdown), its required that presentations run from a local web 
+server. The following instructions will set up such a server as well as all of the development tasks needed to make 
+edits to the reveal.js source code.
 
-## Work Done
+1. Install [Node.js](http://nodejs.org/) (4.0.0 or later)
 
+1. Clone the repository (make it one single time)
+   ```sh
+   $ git clone https://github.com/Caribou69/caribou69.github.io.git
+   ```
+If you are on Windows, you can use GitBash, available at <https://gitforwindows.org/>.
 
-## TODO:
+1. Navigate to the repository folder (make it one single time)
+   ```sh
+   $ cd caribou69.github.io
+   ```
 
-* Fork code form [this repo](https://github.com/tiaanduplessis/dronk-expo) (written in React.js)
+1. Install dependencies (make it one single time)
+   ```sh
+   $ npm install
+   ```
 
+1. Serve the presentation and monitor source files for changes
+   ```sh
+   $ npm start
+   ```
 
-### Target:
-Making 2 pages linked. Available from web (called **index** and **page_1**.
+1. Open <http://localhost:8000> to view your presentation
 
-#### **index** page
-A form to fill, with some criterion to refuse form (ex: fields not filled)
-* 2 fields min
-* can extend the number of fields clicking on "add"
-* can remove field clicking on "rm" (2 fields min)
-* A button to accept form
-* A check to verify if all fields are filled AND if all fields contains different entry
-* When the form is OK, clicking on the button leads to change page to **page_1**
+   You can change the port by using `npm start -- --port=8001`.
 
-#### **page_1** page
-A **slide like** page containing an image, a text.
-* The text contains one entry from the previous filled form (the entry is choose randomly)
-* when clicking, go on next page
+## Details
+
+### Folder Structure
+
+#### img/
+All the requested images.
+
+For example, the Favicon is stored into `icon.ico`.
+
+### reveal.js/
+The code from `reveal.js` repo.
+
+- **css/** Core styles without which the project does not function
+- **js/** Like above but for JavaScript
+- **plugin/** Components that have been developed as extensions to reveal.js
+- **lib/** All other third party assets (JavaScript, CSS, fonts)
+
+*Note: I have changed `index.html` by `slides.html` in all the code.*

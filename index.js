@@ -1,4 +1,4 @@
-/*
+/**
 Script managing Page index.html.
 
 From: https://codepen.io/JeromeRenders/pen/EPNxPv/
