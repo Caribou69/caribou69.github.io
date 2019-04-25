@@ -12,18 +12,33 @@ later.)*
 ## TODO:
 
 ### Target:
-Making 2 pages linked. Available from web (called **index** and **slides**.)
+Making 3 consecutive pages available on the web (called **index** **level** and **slides**.)
 
 #### **index** page
 A form to fill, with some criterion to refuse form (ex: fields not filled)
 * 2 fields min
 * can extend the number of fields clicking on "add"
-* can remove field clicking on "rm" (2 fields min)
+* when you click on "add", add a profile card of the player (just fill it with name + random img
++ random decr) -> see [this link](https://freefrontend.com/css-cards/)
+* can remove field clicking on "cross" in the contact card
 * A button to accept form
-* A check to verify if all fields are filled AND if all fields contains different entry
-* When the form is OK, clicking on the button leads to change page to **page_1**
+* A check to verify if at least 2 players AND if all fields contains different entry
+* When the form is OK, clicking on the button leads to change page to next page
 
-#### **slides** page
+#### **level** page
+* Choose the difficulty level between 3 levels (pyjama-party, medium, hard-core)
+* divide the page into 3 gif / img, pointing the mouse on the image action the gif.
+* You can help with [this code](http://jsfiddle.net/xnLn6s5o/)
+
+#### **slides** page -> OK
 A **slide like** page containing an image, a text.
 * The text contains one entry from the previous filled form (the entry is choose randomly)
 * when clicking, go on next page
+
+## Features to add
+### JS code
+* select a fixed number of slides, and add it dynamically to an empty presentation
+* add characteristics to each slide (game, action,...)
+* add a lot of slides (1 per dir ?)
+* write a french doc to learn how adding new slides
+* create new deck, and select random deck when launching
