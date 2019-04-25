@@ -111,6 +111,18 @@
         ]
     });
 
+    // Add action when left / right click
+    window.addEventListener("mousedown", handleClick, false);
+    window.addEventListener("contextmenu", function(e) { e.preventDefault(); }, false);
+
+    function handleClick(e) {
+        e.preventDefault();
+        // left click
+        if(e.button === 0) Reveal.next();
+        // right click
+        if(e.button === 2) Reveal.prev();
+    }
+
 
 
 </script>
