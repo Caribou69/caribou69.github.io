@@ -1,237 +1,146 @@
-<!DOCTYPE html>
-<html lang='en' class=''>
-    <head>
 
-        <meta charset='UTF-8'><meta name="Piolal" content="noindex">
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title></title>
 
-        <!-- Shortcut icon -->
-        <link rel="icon" href="img/icon.ico" />
-         <!-- favicon -->
--        <link rel="shortcut icon" href="img/icon.ico"/>
+  <!-- Import bootstrap-->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+  <style type="text/css">
+    .chips.chips-initial {
+    border-bottom: 1px solid #ddd;
+}
+.chip {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 30px;
+    padding: 0px 13px;
+    border-radius: 16px;
+    background-color: #eef2f3;
+    margin: 5px 5px; 
+    display: inline-block;
+    outline: none;
+}
+.chip:focus { 
+    background-color: #51c5c2;
+    color: #fff;
+}
+.closebtn {
+    cursor: pointer;
+}
+.chips.chips-initial input.chip-input {
+    display: inline-block ;
+    float: none;
+    width: 120px;
+    min-width: 30px;
+    border:none;
+    outline: none;
+}
+  </style>
 
 
-        <!--Necessary: little buttons at the left of the form-->
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
-
-        <!-- Custom style sheet CSS-->
-        <link rel="stylesheet" type="text/css" href="index_style.css">
 </head>
 
-    <body>
-
-        <h1>Welcom to picolal</h1>
-        <h2>Just practising Javascript</h2>
-
-        <a href="slides.html">
-            <button>Go into slides</button>
-        </a>
-
-        <form>
-          <ul class="items"></ul>
 
 
-          <fieldset class="username enable">
-
-            <!-- Icon of user -->
-            <div class="icon left"><i class="user"></i></div>
-            <!-- Customizable input  -->
-            <div>
-                <input type="text" class="custom-class" id="Players" placeholder="Ex: Dr Sangria" size="30" maxlength="100" />
-                <!-- placeholder : Indication,
-                size : size of the window,
-                maxlength : Number of character max
-                -->
-            </div>
-
-            <!-- Arrow at the right of the button to validate -->
-            <div class="icon right button"><i class="arrow"></i></div>
-
-          </fieldset>
-
-          <fieldset class="email">
-            <div class="icon left"><i class="letter"></i></div>
-            <input type="mail" name="email" placeholder="Email"/>
-            <div class="icon right button"><i class="arrow"></i></div>
-          </fieldset>
+<body>
 
 
-          <fieldset class="password">
-            <div class="icon left"><i class="lock"></i></div>
-            <input type="password" name="password" placeholder="Password"/>
-            <div class="icon right button"><i class="arrow"></i></div>
-          </fieldset>
+<div class="row">
+  <div class="col-sm-6 mt-3 mr-auto ml-auto">
+    <div class="chips chips-initial input-field">
+      <!--
+       <div class="chip">NL78545645 
+          <span class="closebtn" >&times;</span> 
+       </div>
+       <div class="chip">NL78545645 
+          <span class="closebtn" >&times;</span> 
+       </div>
+       <div class="chip">NL78545645 
+          <span class="closebtn" >&times;</span> 
+       </div>   
+       -->                    
+       <input type="text" class="chip-input" id="chip-input"> 
+    </div>
+  </div>
+</div>
 
 
-          <fieldset class="thanks">
-            <div class="icon left"><i class="heart"></i></div>
-            <p>Thanks for your time</p>
-            <div class="icon right"><i class="heart"></i></div>
-          </fieldset>
-        </form>
 
-        <!-- Default with no input (automatically generated)  -->
-        <div class="chips" id="player_list_chips"></div>    
+<!-- Button -->
+<div class="row">
+  <div class="col-sm-12">
+    <div class="text-center">
+      <!-- Bouton valid-->
+      <input class="btn btn-primary" type="submit" value="C'est parti !" onClick="Submit();" />
+    </div>
+  </div>
+</div>
 
-        <!-- ........................Javascript management.......................................-->
+
+
+<!-- Two ajax code lib -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 
 <script type="text/javascript">
-  // VARS
-  //---------------------------------------------------------
-  // Debug message
-  var debug_message = "-".repeat(20)
 
-  // Number of players
-  var n_players = 0
-  // List of players
-  var player_names = []
+var player_list=[];
+var nb_players = 0;
 
-  // Element pass in the `input` field
-  var input = document.getElementById("Players");
+  // Insert new chip
+$("#chip-input").keyup(function(event) {
+    var data = this.value;
+    if (event.keyCode === 13) {
+      //alert(data);
+      $( '<div class="chip"> '+data+' <span class="closebtn" >&times;</span></div>' ).insertBefore(this);
+      $(this).val(null);
 
-  // Get the div which will contains all player ID as HTML chips
-  var player_list_div = document.getElementById("player_list_chips");
-
-
-  // Functions
-  //---------------------------------------------------------
-  // Add new player (when pressing enter)
-  function AddPlayer(){
-
-    // One more player
-    n_players++
-
-    // Get the name of the pseudo inputed
-    // --------------------------------------------------------
-    var new_player_name = document.getElementById("Players").value
-    // Update list of available players
-    player_names.push(new_player_name)
-
-    // Reset the text in the input field
-    var input_text = document.getElementById("Players")
-    input_text.value = ""
-
-    // New div containing new chip
-    // --------------------------------------------------------
-    var new_div = document.createElement("div")
-    // Id of these new div: *str(new_player_name)*
-    new_div.id = new_player_name.toString()
-    // new div class style
-    new_div.className ="chip"
-
-    // Img : at the left of the text
-    //--------------------------------------------------
-    var img = document.createElement("img")
-    // CSS style
-    img.className ="chip"
-    // Image
-    img.src="Image/jager.jpg"
-    // Alt to img
-    img.alt="Dr Sangria"
-    // Img size (little)
-    img.width="96" 
-    img.height="96"
-    
-    // Span : Little cross to remove player
-    //--------------------------------------------------
-    var span = document.createElement("span")
-    //css style
-    span.class = "closebtn"
-    //Little cross (`&times`` is HTML code for X)
-    span.innerHTML = '&times;'
-    // add action when clicking on the cross (remove player)
-    // span.setAttribute("onclick", "this.parentElement.style.display='none'")
-    // add action when clicking on the cross (remove player)
-    span.setAttribute("onclick", "removePlayer('"+ new_player_name + "');")
-
-    // Update new div
-    //---------------------------------------------
-    new_div.appendChild(img);
-    new_div.appendChild(document.createTextNode(new_player_name));
-    new_div.appendChild(span);
-    
-    // Update global div containing all players
-    //---------------------------------------------
-    // Add this new chip to player list
-    player_list_div.appendChild(new_div)
-
-    // Just for debug
-    console.log(debug_message)
-    console.log("Nb_players: " + n_players)
-    console.log("Player names:" + player_names)
-
-  }
-
-  // A function to remove a particular player
-  function removePlayer(player_to_remove){
-
-    // Select the div of the player to remove
-    var div_to_rm = document.getElementById(player_to_remove)
-    console.log(player_to_remove)
-
-    // Can not rm less than one player
-    if((n_players) > 0) { 
-      // Update div containing players
-       player_list_div.removeChild(div_to_rm) 
-       // Update `n_players`
-       n_players--
-       // Update list of players
-       removeFromList(player_names, player_to_remove)
-       
-      // Just for debug
-      console.log(debug_message)
-      console.log("Nb_players: " + n_players)
-      console.log("Player names:" + player_names)
+      player_list.push(data);
+      nb_players ++;
+      console.log("Player list: " + player_list);
+      console.log("Nb players: " + nb_players);
     }
-  }
+});
 
+// Remove chip
+$(document).on('click','.closebtn', function() {
+  //alert('test');
+  $(this).parent().remove();
 
-function removeFromList(list, element){
-  // remove str(element) from list
-  list.splice( list.indexOf(element), 1 );
+  // find according to console...
+  var val_to_remove = $(this).parent()[0].firstChild.data  
+  // ex: "  caribou69 is awesome  "
+
+  // Remove spaces before / after
+  val_to_remove = val_to_remove.replace(/^[ ]+|[ ]+$/g,'')
+  //val_to_remove = "caribou69 is awesome"
+
+  removeFromArray(val_to_remove);
+
+});
+
+// Remove `element` form array `player_list`
+function removeFromArray(element){
+// Assuming `element` in `player_list` !
+  player_list.splice(player_list.indexOf(element), 1)
+  nb_players --
+  console.log("Player list: " + player_list);
+  console.log("Nb players: " + nb_players);
 }
-  // ACTION LISTENER EVENT
-  // -------------------------------------------------------------------
-  // Add player when pressing enter
-  // ------------------------------
-  // Execute a function when the user releases a key on the keyboard
-  input.addEventListener("keyup", function(event) {
-  // Number 13 is the "Enter" key on the keyboard
-  if (event.keyCode === 13) {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Add player
-    AddPlayer();
-    }
-  }); 
 
-  // Just for debug
-  console.log(debug_message)
-  console.log("Nb_players: " + n_players)
-  console.log("Player names:" + player_names)
 
+function Submit(){
+  if (nb_players < 2) {
+    alert("nb players minimum 2")
+  } else {
+    // rediection
+    document.location.href = "slides.html"
+}
+}
 </script>
-
-<!-- Coockie management: sharing info between pages (player names, ...) -->
-<script type="text/javascript" src="coockie.js" ></script> 
-<!--Loading JS code managing interface -->
-<script type="text/javascript" src="index.js" ></script> 
-
-<!-- JS dedicated to current page -->
-<script type="text/javascript">
-    var body = document.querySelector('body'),
-    form = document.querySelector('form'),
-    count = form.querySelectorAll('fieldset').length;
-
-    window.onload = init;
-    document.body.onmouseup = function (event) {
-      var target = event.target || event.toElement;
-      if (target.classList.contains("button")) next(target);
-    };
-    document.addEventListener("keydown", keyDown, false);
-</script>
-
-<!-- Add little ticks at the left of the selection pannel -->
-<script src='https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js'></script>
-
-        </body>
+</body>
 </html>

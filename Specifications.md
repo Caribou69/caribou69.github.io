@@ -10,6 +10,13 @@ later.)*
 ---
 
 ## TODO:
+* add gestion of cookies in index.html
+* add feature: impossible to have two same names
+* add img to each 'chip'
+* add RANDOM img to each 'chip'
+* add background color to index.html
+* add prettier css to index.html
+
 
 ### Target:
 Making 3 consecutive pages available on the web (called **index** **level** and **slides**.)
