@@ -20,6 +20,9 @@
 <!--     Custom style sheet CSS-->
     <link rel="stylesheet" type="text/css" href="index_style.css">
 
+    <!-- Pretty font -->
+    <link href='https://fonts.googleapis.com/css?family=La Belle Aurore' rel='stylesheet'>
+
 </head>
 
 <body>
@@ -28,33 +31,27 @@
 <header>
     <div class="container">
         <!--Title + one img (the favicon)-->
-        <h1>Welcom to my project</h1>
-        <h2>Just practising Javascript</h2>
+        <h1>Picolal</h1>
+        <h2> Qu'importe le flacon pourvu qu'on ait l'ivresse?</h2>
         <img src="img/icon.ico" class="center_img" alt="">
     </div>
 
-
 </header>
 
-<!--Form -->
-<div class="my-form" id="form">
+    <!-- GLOBAL PAGE FORM -->
+    <div class="my-form" id="form">
 
-    <!-- Input, where we add player -->
-    <div class="container">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <img src="img/wine.png" height="60" width="60" alt="">
+        <!-- Input where player name is put -->
+        <div class="username enable">
+            <div class="icon left">
+                <i class="user"></i>
             </div>
-            <input type="text" class="form-control" aria-label="Sizing example input"
-                   aria-describedby="inputGroup-sizing-default" id="chip-input">
+            <input type="text" name="username" placeholder="Ex: Dr Sangria" id="chip-input"/>
         </div>
-    </div>
 
     <!-- Div containing new player name -->
     <div class="container" id="chips">
-        <div class="row col-sm-6 mt-3 mr-auto ml-auto text-center">
-                <div class="chips chips-initial input-field">
-                </div>
+        <div class="chips chips-initial input-field">
         </div>
     </div>
 
@@ -80,7 +77,8 @@
 
 <!--Script for manage coockie (get, set, check)-->
 <script src="my_prez/cookie.js"></script>
-
+<!-- Const : here, we are interested in var `LIST_OF_ICON`-->
+<script src="my_prez/global_configs.js"></script>
 
 <script type="text/javascript">
 
@@ -89,6 +87,34 @@
     // Hyper-parameters
     var LIST_OF_PLAYER=[];
     var NB_PLAYER=0;
+
+    /** Get a random player in the list of available LIST_OF_ICON.
+     *
+     * @param player_list {Array} list of players
+     * @returns {string} One element of the input list
+     */
+    function getRandomElement(player_list=LIST_OF_ICON){
+        return player_list[Math.floor(Math.random()*player_list.length)];
+    }
+    // See `my_prez/global_config.js` to have value of `LIST_OF_ICON`
+
+
+    /**
+     * Return a str containing html code for a new 'chip' (new player)
+     * @param name: str: name of the player
+     * @param image_src: str: path of the image in the chip
+     *
+     * @return: str containing html code for the new chip
+    */
+    function createChip(name, image_src=getRandomElement()){
+        // 1: an image (random image between LIST_OF_ICON)
+        var img="<img src='img/" + image_src + "' alt=''>";
+
+        // image put into a div +
+        return '<div class="chip"> '+ img + name +' <span class="closebtn" >&times;</span></div>'
+        // <span class="closebtn" >&times;</span> -> the cross to the right (for remove chip)
+        // name: name of the palyer
+    }
 
     /**
      * Display a debug message: ex
@@ -102,24 +128,52 @@
         console.log("Nb players: " + NB_PLAYER);
     }
 
+    /**
+     * Chack if the player name is OK
+     * @param name: Player name to check
+     * @return bool indicating true: OK, false: there is an error
+     * Player name shall:
+     * - not be ""
+     * - not already exist
+     */
+    function checkPlayerName(name){
+        // Player name empty
+        if (name == "") {
+            alert("Nom de joueur vide");
+            return false
+        // name already in list of player
+        } else if (LIST_OF_PLAYER.indexOf(name) != -1) {
+            alert("Nom de joueur déjà existant");
+        } else {// OK
+            return true
+        }
+    }
 
-    // Insert new chip
+
+    // Insert new chip when press enter
+    //-------------------------------------------
     $("#chip-input").keyup(function(event) {
         var data = this.value;
-        if (event.keyCode === 13) {
-            // update space called "chip" with a new chip
-            $(".chips").append('<div class="chip"> '+ data+' <span class="closebtn" >&times;</span></div>');
+        if (event.keyCode === 13) {// press enter
 
-            $(this).val(null);
+            // Check of player name is OK...
+            if (checkPlayerName(data)) {
+                // update space called "chip" with a new chip
+                $(".chips").append(createChip(data));
 
-            // Update global vars
-            LIST_OF_PLAYER.push(data);
-            NB_PLAYER ++;
-            displayRecap()
+                $(this).val(null);
+
+                // Update global vars
+                LIST_OF_PLAYER.push(data);
+                NB_PLAYER ++;
+                displayRecap()
+            }
+            // else: pb in the player name -> not added
         }
     });
 
-    // Remove chip
+    // Remove chip when clic on X
+    //----------------------------------
     $(document).on('click','.closebtn', function() {
         //alert('test');
         $(this).parent().remove();
@@ -144,10 +198,10 @@
         displayRecap()
     }
 
-
+    // Action to perform when clicking on button
     function Submit(){
         if (NB_PLAYER < 2) {
-            alert("nb players minimum 2")
+            alert("Nombre de joueur minimal: 2")
         } else {
             // Create coockies to store relevant info (NB_players, PLAYER_LIST)
             setCookie(cname="player_list", cvalue=LIST_OF_PLAYER);

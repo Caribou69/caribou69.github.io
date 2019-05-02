@@ -12,13 +12,7 @@ later.)*
 ## TODO:
 
 ### index.html
-* add feature: impossible to have two same names
 * add prettier css to index.html
-
-*Advenced features*
-* add img to each 'chip'
-* add RANDOM img to each 'chip'
-
 
 ### level
 * add **level** page (permiting to choose the difficulty level)
