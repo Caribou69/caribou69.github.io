@@ -71,9 +71,17 @@
 <script src="my_prez/global_configs.js"></script>
 <!-- manage the filling of slides -->
 <script src="my_prez/manage_slides.js"></script>
+<!--Manage coockies (set, get, check)-->
+<script src="my_prez/cookie.js"></script>
 
 
 <script>
+    checkCookie("player_list");
+    checkCookie("nb_player");
+
+    LIST_OF_PLAYER = getCookie("player_list");
+    NB_PLAYER = getCookie("nb_player");
+
     // More info about config & dependencies:
     // - https://github.com/hakimel/reveal.js#configuration
     // - https://github.com/hakimel/reveal.js#dependencies
@@ -122,8 +130,6 @@
         // right click
         if(e.button === 2) Reveal.prev();
     }
-
-
 
 </script>
 

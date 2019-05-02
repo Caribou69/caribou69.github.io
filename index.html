@@ -2,96 +2,100 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title></title>
 
-  <!-- Import bootstrap-->
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Picolal</title>
+    <meta charset='UTF-8'><meta name="Picolal" content="noindex">
 
-  <style type="text/css">
-    .chips.chips-initial {
-    border-bottom: 1px solid #ddd;
-}
-.chip {
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 30px;
-    padding: 0px 13px;
-    border-radius: 16px;
-    background-color: #eef2f3;
-    margin: 5px 5px; 
-    display: inline-block;
-    outline: none;
-}
-.chip:focus { 
-    background-color: #51c5c2;
-    color: #fff;
-}
-.closebtn {
-    cursor: pointer;
-}
-.chips.chips-initial input.chip-input {
-    display: inline-block ;
-    float: none;
-    width: 120px;
-    min-width: 30px;
-    border:none;
-    outline: none;
-}
-  </style>
+    <!-- Shortcut icon -->
+    <link rel="icon" href="img/icon.ico" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="img/icon.ico"/>
 
+    <!--Necessary: an other lib containing necessary police etc...-->
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css'>
+
+    <!-- Import bootstrap-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+<!--     Custom style sheet CSS-->
+    <link rel="stylesheet" type="text/css" href="index_style.css">
 
 </head>
 
-
-
 <body>
 
+<!--Title + one img (the favicon)-->
+<h1>Welcom to my project</h1>
+<h2>Just practising Javascript</h2>
+<img src="img/icon.ico" class="center_img" alt="">
 
-<div class="row">
-  <div class="col-sm-6 mt-3 mr-auto ml-auto">
-    <div class="chips chips-initial input-field">
-      <!--
-       <div class="chip">NL78545645 
-          <span class="closebtn" >&times;</span> 
-       </div>
-       <div class="chip">NL78545645 
-          <span class="closebtn" >&times;</span> 
-       </div>
-       <div class="chip">NL78545645 
-          <span class="closebtn" >&times;</span> 
-       </div>   
-       -->                    
-       <input type="text" class="chip-input" id="chip-input"> 
+<!--Form -->
+<div class="my-form">
+    <div class="row">
+      <div class="col-sm-6 mt-3 mr-auto ml-auto">
+        <div class="chips chips-initial input-field">
+          <!--
+           <div class="chip">NL78545645
+              <span class="closebtn" >&times;</span>
+           </div>
+           <div class="chip">NL78545645
+              <span class="closebtn" >&times;</span>
+           </div>
+           <div class="chip">NL78545645
+              <span class="closebtn" >&times;</span>
+           </div>
+           -->
+           <input type="text" class="chip-input" id="chip-input">
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
 
 
-<!-- Button -->
-<div class="row">
-  <div class="col-sm-12">
-    <div class="text-center">
-      <!-- Bouton valid-->
-      <input class="btn btn-primary" type="submit" value="C'est parti !" onClick="Submit();" />
+    <!-- Button -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="text-center">
+                <!-- Bouton valid-->
+                <input class="btn btn-primary" type="submit" value="C'est parti !" onClick="Submit();" />
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
+
+</div>
 
 
 <!-- Two ajax code lib -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
+<!--Script for manage coockie (get, set, check)-->
+<script src="my_prez/cookie.js"></script>
+
 
 <script type="text/javascript">
 
-var player_list=[];
-var nb_players = 0;
+    // INIT VARS
+    //---------------------
+    // Hyper-parameters
+    var LIST_OF_PLAYER=[];
+    var NB_PLAYER=0;
 
-  // Insert new chip
+/**
+ * Display a debug message: ex
+ *  ---------------------
+ *  Player list: a
+ *  Nb players: 1
+ */
+function displayRecap(){
+    console.log("-".repeat(20));
+    console.log("Player list: " + LIST_OF_PLAYER);
+    console.log("Nb players: " + NB_PLAYER);
+}
+
+
+// Insert new chip
 $("#chip-input").keyup(function(event) {
     var data = this.value;
     if (event.keyCode === 13) {
@@ -99,10 +103,9 @@ $("#chip-input").keyup(function(event) {
       $( '<div class="chip"> '+data+' <span class="closebtn" >&times;</span></div>' ).insertBefore(this);
       $(this).val(null);
 
-      player_list.push(data);
-      nb_players ++;
-      console.log("Player list: " + player_list);
-      console.log("Nb players: " + nb_players);
+      LIST_OF_PLAYER.push(data);
+      NB_PLAYER ++;
+      displayRecap()
     }
 });
 
@@ -112,35 +115,39 @@ $(document).on('click','.closebtn', function() {
   $(this).parent().remove();
 
   // find according to console...
-  var val_to_remove = $(this).parent()[0].firstChild.data  
+  var val_to_remove = $(this).parent()[0].firstChild.data;
   // ex: "  caribou69 is awesome  "
 
   // Remove spaces before / after
-  val_to_remove = val_to_remove.replace(/^[ ]+|[ ]+$/g,'')
+  val_to_remove = val_to_remove.replace(/^[ ]+|[ ]+$/g,'');
   //val_to_remove = "caribou69 is awesome"
 
   removeFromArray(val_to_remove);
 
 });
 
-// Remove `element` form array `player_list`
+// Remove `element` form array `LIST_OF_PLAYER`
 function removeFromArray(element){
-// Assuming `element` in `player_list` !
-  player_list.splice(player_list.indexOf(element), 1)
-  nb_players --
-  console.log("Player list: " + player_list);
-  console.log("Nb players: " + nb_players);
+// Assuming `element` in `LIST_OF_PLAYER` !
+  LIST_OF_PLAYER.splice(LIST_OF_PLAYER.indexOf(element), 1);
+  NB_PLAYER --;
+  displayRecap()
 }
 
 
 function Submit(){
-  if (nb_players < 2) {
+  if (NB_PLAYER < 2) {
     alert("nb players minimum 2")
   } else {
+      // Create coockies to store relevant info (NB_players, PLAYER_LIST)
+      setCookie(cname="player_list", cvalue=LIST_OF_PLAYER);
+      setCookie(cname="nb_player", cvalue=NB_PLAYER);
+
     // rediection
     document.location.href = "slides.html"
 }
 }
 </script>
+
 </body>
 </html>

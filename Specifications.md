@@ -10,12 +10,26 @@ later.)*
 ---
 
 ## TODO:
-* add gestion of cookies in index.html
+
+### index.html
 * add feature: impossible to have two same names
+* add prettier css to index.html
+
+*Advenced features*
 * add img to each 'chip'
 * add RANDOM img to each 'chip'
-* add background color to index.html
-* add prettier css to index.html
+
+
+### level
+* add **level** page (permiting to choose the difficulty level)
+* add a difficulty level
+
+### slides
+* build 15 slides
+* build the final slide
+
+*Advenced features*
+* select a fixed number of slides, and add it dynamically to an empty presentation
 
 
 ### Target:
