@@ -72,9 +72,6 @@ h2 {
 --------------------------------------
  */
 
-.chips.chips-initial {
-    border-bottom: 1px solid #ddd;
-}
 .chip {
     font-size: 15px;
     font-weight: bold;
@@ -114,3 +111,30 @@ FORM
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+/* BUTTON
+--------------*/
+
+#chips {
+    position: relative;
+    top: 20px;
+}
+
+/* Put the button at 20px under the bar */
+#button_ok {
+    position: relative;
+    top: 20px;
+
+}
+
+
+/*.button {*/
+/*    font-family: "Helvetica Neue", Helvetica, 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;*/
+/*}*/
+
+/*.button:hover*/
+/*{*/
+/*    cursor: pointer;*/
+/*    color: #1565C0;*/
+/*    !*font-weight: 100%;*!*/
+/*}*/

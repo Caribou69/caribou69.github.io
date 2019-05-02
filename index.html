@@ -24,40 +24,48 @@
 
 <body>
 
-<!--Title + one img (the favicon)-->
-<h1>Welcom to my project</h1>
-<h2>Just practising Javascript</h2>
-<img src="img/icon.ico" class="center_img" alt="">
-
-<!--Form -->
-<div class="my-form">
-    <div class="row">
-      <div class="col-sm-6 mt-3 mr-auto ml-auto">
-        <div class="chips chips-initial input-field">
-          <!--
-           <div class="chip">NL78545645
-              <span class="closebtn" >&times;</span>
-           </div>
-           <div class="chip">NL78545645
-              <span class="closebtn" >&times;</span>
-           </div>
-           <div class="chip">NL78545645
-              <span class="closebtn" >&times;</span>
-           </div>
-           -->
-           <input type="text" class="chip-input" id="chip-input">
-        </div>
-      </div>
+<!--Header: title + image-->
+<header>
+    <div class="container">
+        <!--Title + one img (the favicon)-->
+        <h1>Welcom to my project</h1>
+        <h2>Just practising Javascript</h2>
+        <img src="img/icon.ico" class="center_img" alt="">
     </div>
 
 
+</header>
 
-    <!-- Button -->
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="text-center">
-                <!-- Bouton valid-->
-                <input class="btn btn-primary" type="submit" value="C'est parti !" onClick="Submit();" />
+<!--Form -->
+<div class="my-form" id="form">
+
+    <!-- Input, where we add player -->
+    <div class="container">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <img src="img/wine.png" height="60" width="60" alt="">
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                   aria-describedby="inputGroup-sizing-default" id="chip-input">
+        </div>
+    </div>
+
+    <!-- Div containing new player name -->
+    <div class="container" id="chips">
+        <div class="row col-sm-6 mt-3 mr-auto ml-auto text-center">
+                <div class="chips chips-initial input-field">
+                </div>
+        </div>
+    </div>
+
+
+    <!-- Button for validate and start game -->
+    <div class="container" id="button_ok">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                    <!-- Bouton valid-->
+                    <input class="btn btn-outline-primary" type="submit" value="C'est parti !" onClick="Submit();" />
+                    <!-- outline-primary: color when hover mouse -->
             </div>
         </div>
     </div>
@@ -82,71 +90,73 @@
     var LIST_OF_PLAYER=[];
     var NB_PLAYER=0;
 
-/**
- * Display a debug message: ex
- *  ---------------------
- *  Player list: a
- *  Nb players: 1
- */
-function displayRecap(){
-    console.log("-".repeat(20));
-    console.log("Player list: " + LIST_OF_PLAYER);
-    console.log("Nb players: " + NB_PLAYER);
-}
-
-
-// Insert new chip
-$("#chip-input").keyup(function(event) {
-    var data = this.value;
-    if (event.keyCode === 13) {
-      //alert(data);
-      $( '<div class="chip"> '+data+' <span class="closebtn" >&times;</span></div>' ).insertBefore(this);
-      $(this).val(null);
-
-      LIST_OF_PLAYER.push(data);
-      NB_PLAYER ++;
-      displayRecap()
+    /**
+     * Display a debug message: ex
+     *  ---------------------
+     *  Player list: a
+     *  Nb players: 1
+     */
+    function displayRecap(){
+        console.log("-".repeat(20));
+        console.log("Player list: " + LIST_OF_PLAYER);
+        console.log("Nb players: " + NB_PLAYER);
     }
-});
 
-// Remove chip
-$(document).on('click','.closebtn', function() {
-  //alert('test');
-  $(this).parent().remove();
 
-  // find according to console...
-  var val_to_remove = $(this).parent()[0].firstChild.data;
-  // ex: "  caribou69 is awesome  "
+    // Insert new chip
+    $("#chip-input").keyup(function(event) {
+        var data = this.value;
+        if (event.keyCode === 13) {
+            // update space called "chip" with a new chip
+            $(".chips").append('<div class="chip"> '+ data+' <span class="closebtn" >&times;</span></div>');
 
-  // Remove spaces before / after
-  val_to_remove = val_to_remove.replace(/^[ ]+|[ ]+$/g,'');
-  //val_to_remove = "caribou69 is awesome"
+            $(this).val(null);
 
-  removeFromArray(val_to_remove);
+            // Update global vars
+            LIST_OF_PLAYER.push(data);
+            NB_PLAYER ++;
+            displayRecap()
+        }
+    });
 
-});
+    // Remove chip
+    $(document).on('click','.closebtn', function() {
+        //alert('test');
+        $(this).parent().remove();
 
-// Remove `element` form array `LIST_OF_PLAYER`
-function removeFromArray(element){
+        // find according to console...
+        var val_to_remove = $(this).parent()[0].firstChild.data;
+        // ex: "  caribou69 is awesome  "
+
+        // Remove spaces before / after
+        val_to_remove = val_to_remove.replace(/^[ ]+|[ ]+$/g,'');
+        //val_to_remove = "caribou69 is awesome"
+
+        removeFromArray(val_to_remove);
+
+    });
+
+    // Remove `element` form array `LIST_OF_PLAYER`
+    function removeFromArray(element){
 // Assuming `element` in `LIST_OF_PLAYER` !
-  LIST_OF_PLAYER.splice(LIST_OF_PLAYER.indexOf(element), 1);
-  NB_PLAYER --;
-  displayRecap()
-}
+        LIST_OF_PLAYER.splice(LIST_OF_PLAYER.indexOf(element), 1);
+        NB_PLAYER --;
+        displayRecap()
+    }
 
 
-function Submit(){
-  if (NB_PLAYER < 2) {
-    alert("nb players minimum 2")
-  } else {
-      // Create coockies to store relevant info (NB_players, PLAYER_LIST)
-      setCookie(cname="player_list", cvalue=LIST_OF_PLAYER);
-      setCookie(cname="nb_player", cvalue=NB_PLAYER);
+    function Submit(){
+        if (NB_PLAYER < 2) {
+            alert("nb players minimum 2")
+        } else {
+            // Create coockies to store relevant info (NB_players, PLAYER_LIST)
+            setCookie(cname="player_list", cvalue=LIST_OF_PLAYER);
+            setCookie(cname="nb_player", cvalue=NB_PLAYER);
 
-    // rediection
-    document.location.href = "slides.html"
-}
-}
+            // redirection
+            document.location.href = "slides.html"
+        }
+    }
 </script>
 
 </body>
