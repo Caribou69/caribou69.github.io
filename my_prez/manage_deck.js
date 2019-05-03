@@ -17,14 +17,21 @@ var other_slides = document.getElementById("my_deck");
 
 // 1/ Fill last slide
 //----------------------------------------
-var new_last_slide = fillSection(last_slide, [LAST_SLIDE]);
+// update the prez
+var new_last_slide = fillSection(last_slide, LAST_SLIDES);
 
 // Remove the blank
 last_slide.remove();
 
 // 2/ Fill other slide
 //----------------------------------------
-var new_other_slides = fillSection(other_slides, MY_DECK);
+// Randomly select (and shuffle) a number of slides in the pool of slides.
+var slides_to_consider = getRandomSubarray(MY_DECK, NB_SLIDES_SELECTED);
+
+console.log("Select slides: " + slides_to_consider);
+
+// create these slides, and update the prez
+var new_other_slides = fillSection(other_slides, slides_to_consider);
 // Remove the blank
 other_slides.remove();
 
@@ -88,4 +95,3 @@ function fillSection(section, slide_list) {
     }
     return result
 }
-

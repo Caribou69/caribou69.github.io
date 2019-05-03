@@ -68,6 +68,11 @@ These scripts are stored into dir `my_prez/`:
 * `cookie.js`: module managing cookies (share vars between pages): get, set, check
 * `manage_slides.js`: A script managing function for fill slides with player_names / nb shots, ...
 
+### dir `my_prez/utils/`
+This dir contains relevant module to manipulate js elements.
+
+* `utils_array.js`: a module containing functions to manipulate javascipt Arrays
+
 ## Customize favicon
 The favicon is the little image shown in your browser tab. It is stored in `img/icon.ico`.
 
