@@ -1,11 +1,18 @@
 # Picolal
 A small proof of concept to produce a drinking game in js.
- \#DrinkingGame \#Reveal.js
+<span style="color:blue">\#DrinkingGame \#Reveal.js </span>
 
 The slides are generated with the [Reveal.js framework](https://github.com/hakimel/reveal.js/).
 
+*Note: The website was initially dedicated to french persons. (A traducing work have to be done later.)*
+*Note 2: I tried to make all code / docs in en. Only the website produced is in fr.(A traducing work have to be done 
+later.)* 
+
+## Website
+This github repo is repo
+
 ## Customize an element
-For customize an element (or details about files / scripts), please, see the [CONTRIBUTING.md](contributing.md)
+For customize an element (or details about files / scripts), please, see the [CONTRIBUTING.md](contributing.md).
 
 ## Specifications
 Specifications are listed in file [Specifications.md](Specifications.md). For a french version, please, see
@@ -13,7 +20,7 @@ the [ChaierDesCharges.txt](doc/fr/CahierDesCharges.txt).
 
 ## How to begin ?
 
-### Full setup
+### Full local setup
 Because we are using `reveal.js` features (external Markdown), its required that presentations run from a local web 
 server. The following instructions will set up such a server as well as all of the development tasks needed to make 
 edits to the reveal.js source code.
@@ -44,6 +51,3 @@ If you are on Windows, you can use GitBash, available at <https://gitforwindows.
 1. Open <http://localhost:8000> to view your presentation
 
    You can change the port by using `npm start -- --port=8001`.
-
-## Details
-For technical details about the project, please, see the [CONTRIBUTING.md](contributing.md).

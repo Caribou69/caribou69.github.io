@@ -1,5 +1,4 @@
 # Utile
-
 Cette doc (comme toute celle présente dans `doc/fr`) est en Français.
 
 Quelques liens et astuces.
@@ -9,11 +8,10 @@ Le gitconfig est dans `C://ProgramData/Git/config`.
 
 ```bash
 [user]
-	email = jules-ed.31+caribou69@hotmail.fr
 	name = caribou69
 [credential]
 	helper = store
-	username = jdenis
+	username = caribou69
 [core]
 	symlinks = false
 	autocrlf = true
@@ -68,7 +66,7 @@ Le gitconfig est dans `C://ProgramData/Git/config`.
 Créer un fichier `.bashrc` dans votre home, ajoutez y:
 ```bash
 # Extend path adding npm lib
-export PATH="/c/Users/jules-edouard.denis/Documents/Node/node-v10.15.3-win-x64":$PATH
+export PATH="../Node/node-v10.15.3-win-x64":$PATH
 # Replace by the path of your version
 
 echo ".bashrc file loaded"

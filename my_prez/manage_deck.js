@@ -14,23 +14,40 @@ var last_slide = document.getElementById("last_slide");
 // other `section` to fill
 var other_slides = document.getElementById("my_deck");
 
-// // 1/ Fill last slide
-// // ----------------------------------
-// // Init a new slide, with same attributes than `last_slide`
-// var new_slide = last_slide.cloneNode(true);  // deep copy
-//
-// // set attributes
-// new_slide.setAttribute('id', null);
-// // This slide points to `LAST_SLIDE` (see `my_prez/global_config.js`)
-// new_slide.setAttribute('data-markdown', LAST_SLIDE);
-// // Add a state (for apply script  `my_prez/manage_slides`)
-// new_slide.setAttribute('data-state', "somestate");
-//
-// // Remove the blank
-// last_slide.remove();
 
-// 2/ Fill other slides
-// ----------------------------------
+// 1/ Fill last slide
+//----------------------------------------
+var new_last_slide = fillSection(last_slide, [LAST_SLIDE]);
+
+// Remove the blank
+last_slide.remove();
+
+// 2/ Fill other slide
+//----------------------------------------
+var new_other_slides = fillSection(other_slides, MY_DECK);
+// Remove the blank
+other_slides.remove();
+
+// 3/ Build deck
+//----------------------------------------
+// shuffle all slides already in the `slide.html`file
+Reveal.shuffle();
+console.log("Shuffle slides");
+// Add new slide
+newslide();
+
+// FUNCTIONS
+//-----------------------------------------------------------------------------
+/**
+ * Function to fill `slide.html` with requested slides.
+ */
+function newslide() {
+    console.log("Add new slides");
+    deck.appendChild(new_other_slides);
+    console.log("Add last slide");
+    deck.appendChild(new_last_slide);
+}
+
 /**
  * Fill empty section in `slide.html` with `slide_list` files (path of files).
  *
@@ -68,38 +85,7 @@ function fillSection(section, slide_list) {
         // Update result
         //--------------
         result.appendChild(current_slide);
-        }
-    return result
     }
-
-// Fill last slide
-//----------------------------------------
-var new_last_slide = fillSection(last_slide, [LAST_SLIDE]);
-
-// Remove the blank
-last_slide.remove();
-
-// Fill other slide
-//----------------------------------------
-var new_other_slides = fillSection(other_slides, MY_DECK);
-// Remove the blank
-other_slides.remove();
-
-// Build deck
-//----------------------------------------
-// shuffle all slides already in the `slide.html`file
-Reveal.shuffle();
-console.log("Shuffle slides");
-// Add new slide
-newslide();
-
-// FUNCTIONS
-//-----------------------------------------------------------------------------
-function newslide() {
-    console.log("Add new slides");
-    deck.appendChild(new_other_slides);
-    console.log("Add last slide");
-    deck.appendChild(new_last_slide);
+    return result
 }
-
 

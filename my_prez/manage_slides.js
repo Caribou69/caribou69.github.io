@@ -36,10 +36,10 @@ function getRandomPlayer(player_list=LIST_OF_PLAYER){
  */
 function replace_span(key, replace_by) {
     // get span containing NAME=`key` (list)
-    var span_to_change=document.getElementsByName(key);
+    let span_to_change=document.getElementsByName(key);
 
     // for each element, replace by `replace_by`
-    for (var i = 0; i<span_to_change.length; i++) {
+    for (let i = 0; i<span_to_change.length; i++) {
         span_to_change[i].textContent=replace_by();
     }
 }
