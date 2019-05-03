@@ -25,7 +25,6 @@ later.)*
 *Advenced features*
 * select a fixed number of slides, and add it dynamically to an empty presentation
 
-
 ### Target:
 Making 3 consecutive pages available on the web (called **index** **level** and **slides**.)
 

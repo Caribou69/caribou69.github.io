@@ -6,7 +6,7 @@ Style sheet for index.html
 /* GLOBAL
 ---------------*/
 body {
-    background: #33cc33;
+    background: #FF8C00; /*#33cc33;*/
     font-family: sans-serif;
 }
 body fieldset {

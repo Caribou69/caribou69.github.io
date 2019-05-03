@@ -1,7 +1,5 @@
-# Section 1
+# Let's go !
 
-Yo yo 
+<span name="PLAYER"></span>, tu es le...
 
-<span name="PLAYER"></span> and <span name="PLAYER"></span> leads in that domain.
-
-You make <span name='GLOUPS'></span>, for <span name="PLAYER"></span>.
+Tu bois <span name='GLOUPS'></span> gorgées...

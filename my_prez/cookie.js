@@ -19,7 +19,7 @@
 function setCookie(cname, cvalue) {
     // Parse `cvalue` into a json  (util for lists)
     //--------------------------------
-    var json_str = JSON.stringify(cvalue);
+    let json_str = JSON.stringify(cvalue);
     // ex: ['a', 'b'] -> "['a', 'b']"
 
     // Put into cookie
@@ -42,37 +42,37 @@ function setCookie(cname, cvalue) {
 function getCookie(cname) {
 
     // 0: INIT VARS
-    var name = cname + "=";
-    var results = [];
+    let name = cname + "=";
+    let results = [];
 
     // 1 : read entire cookie
-    var decodedCookie = decodeURIComponent(document.cookie); // str
-    var ca = decodedCookie.split(';'); // idem : array of saved cookies
+    let decodedCookie = decodeURIComponent(document.cookie); // str
+    let ca = decodedCookie.split(';'); // idem : array of saved cookies
     // " nb_player=2", " player_list="['a','b']""
 
     // For each KEY to read:
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
+    for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
         //c = " player_list="['a','b']""
 
         // remove multple spaces
-         while (c.charAt(0) == ' ') {
+         while (c.charAt(0) === ' ') {
             // If current char is a space: rm it (substring(1))
             c = c.substring(1);
         }
         //c = "player_list="['a','b']""
 
         // If it's the requested name (.indexOf(name)==0)...
-        if (c.indexOf(name) == 0) {
+        if (c.indexOf(name) === 0) {
 
             // Add it to result
             //---------------------
             // content of the cookie (as JSON)
-            var json_content = c.substring(name.length, c.length);
+            let json_content = c.substring(name.length, c.length);
             //"['a','b']""
 
             // Read the content
-            var content = JSON.parse(json_content);
+            let content = JSON.parse(json_content);
             // ['a', 'b']
 
             // Update result
@@ -90,8 +90,8 @@ function getCookie(cname) {
  * @param message: Message to display into console
  */
 function checkCookie(name, message = "cookie found : ") {
-    var username = getCookie(name);
-    if (username != "") {
+    let username = getCookie(name);
+    if (username !== "") {
         console.log(message + name + " : " + username);
     }
 }

@@ -11,7 +11,9 @@
 
     <link rel="stylesheet" href="reveal.js/css/reset.css">
     <link rel="stylesheet" href="reveal.js/css/reveal.css">
-    <link rel="stylesheet" href="reveal.js/css/theme/black.css">
+    <!-- The theme -->
+    <link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+
 
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="reveal.js/lib/css/monokai.css">
@@ -29,34 +31,25 @@
 
 <div class="reveal">
     <div class="slides" id="slides_div">
-        <section> Single Horizontal slide </section>
 
-        <section>
-            <p>Title</p>
-            <p class="fragment" data-autoslide="1000">Tic</p>
-            <p class="fragment" data-autoslide="1000">Tac</p>
-            <p> End </p>
-        </section>
-
+        <!-- Slides filled in `my_prez/manage_deck.js` script -->
+        <section id="my_deck"></section>
 
         <section>
 
             <!-- need to use npm if call an external md -->
-            <section data-markdown="my_prez/deck/deck1/Page1.md" data-state="somestate"></section>
-            <section data-markdown="my_prez/deck/deck1/Page2.md" data-state="somestate"></section>
+            <section data-transition="fade" data-markdown="my_prez/deck/deck1/Page1.md" data-state="somestate"></section>
+            <section data-transition="zoom" data-markdown="my_prez/deck/deck1/Page2.md" data-state="somestate"></section>
+            <section data-transition="slide" data-markdown="my_prez/deck/deck1/Page3.md" data-state="somestate"></section>
+            <section data-markdown="my_prez/deck/deck1/new_theme.md" data-state="theme2black"></section>
+            <section id="last_slide"></section><!-- Blank slug -->
 
-            <section data-markdown>
-                <script type="text/template">
-                    <!-- .slide: data-background="#ff0000" -->
-                    Markdown content
-                    <!-- For color theme, see https://www.rapidtables.com/web/css/css-color.html-->
-                </script>
-            </section>
-
-            <section>Slide {A}</section>
-            <section>Slide {B}</section>
-
-            <section id="blank"></section><!-- Blank slug -->
+            <!-- data-transition: a reveal.js slide transition
+                 data-markdown: markdown file to display
+                 data-state: An attribute of the slide:
+                    * "somestate": normal slide
+                    * "theme2THEME": change theme to 'THEME' (shall be available theme in `reveal.js/css/theme/`).
+             -->
 
         </section>
 
@@ -71,8 +64,11 @@
 <script src="my_prez/global_configs.js"></script>
 <!-- manage the filling of slides -->
 <script src="my_prez/manage_slides.js"></script>
+<!-- manage the themes of slides -->
+<script src="my_prez/pretty_slide.js"></script>
 <!--Manage coockies (set, get, check)-->
 <script src="my_prez/cookie.js"></script>
+
 
 
 <script>
@@ -133,6 +129,8 @@
 
 </script>
 
+<!--A module to manipulate arrays-->
+<script src="my_prez/utils/utils_array.js"></script>
 <!-- add last slides (AFTER Reveal.init())-->
 <script src="my_prez/manage_deck.js"></script>
 
