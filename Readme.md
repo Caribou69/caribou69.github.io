@@ -1,15 +1,15 @@
 # Picolal
-A small proof of concept to produce a drinking game in js.
-<span style="color:blue">\#DrinkingGame \#Reveal.js </span>
+A small proof of concept to produce a drinking game in js [#DrinkingGame]() [#Reveal.js]().
 
 The slides are generated with the [Reveal.js framework](https://github.com/hakimel/reveal.js/).
 
 *Note: The website was initially dedicated to french persons. (A traducing work have to be done later.)*
+
 *Note 2: I tried to make all code / docs in en. Only the website produced is in fr.(A traducing work have to be done 
 later.)* 
 
 ## Website
-This github repo is repo
+This github repo is repo host a website <https://caribou69.github.io/>.
 
 ## Customize an element
 For customize an element (or details about files / scripts), please, see the [CONTRIBUTING.md](contributing.md).
