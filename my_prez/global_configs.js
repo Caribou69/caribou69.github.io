@@ -15,6 +15,10 @@ const LIST_OF_ICON=['beer.png', 'cocktail.png', 'cocktail2.png', 'wineBottle.png
 // Last slide to add AFTER shuffle
 const LAST_SLIDE="my_prez/deck/deck1/last_slide.md";
 
+// TODO change it to create new decks
+// Slides to display. (list of path)
+const MY_DECK = ["my_prez/deck/deck1/Gage.md", "my_prez/deck/deck1/event.md"];
+
 // Allow debug mode
 //-------------------
 // if true -> ESCAPE button is allowed to access to overview mode

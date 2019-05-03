@@ -7,6 +7,23 @@ a lot of library (i just paste the code).
 My contribution is contained into dir `my_prez`, and in html scripts (choose a player, ...). Indeed, I don't
 customize the building part (with npm / grunt, ...). I just use `reveal.js` as a tool.
 
+## I just want to add some slide ... 
+To add some slides to your *deck*, you have to edit a `.md` (markdown) file in `my_prez/deck/deck1/`.
+
+* Fill it as you want.
+* Add the path of your file to variable `MY_DECK` in `my_prez/global_config.js`.
+
+For example, for a file called `MyPage.md`, add `my_prez/deck/deck1/MyPage.md` to the list.
+
+**Add a random player name**
+To add a random player name (this name is randomly selected in the list of players), 
+add `<span name="PLAYER"></span>`.
+
+**Add a random number of shots**
+To add a random number of shots, add `<span name='GLOUPS'></span>`.
+
+Note that the min / max number of shots is managed into `my_prez/global_config.js`.
+
 ## Relevant files
 
 ### HTML pages

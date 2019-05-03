@@ -22,7 +22,7 @@ function randomIntFromInterval(min=MIN_GLOUPS,max=MAX_GLOUPS)
  * @param player_list {Array} list of players
  * @returns {string} One element of the input list
  */
-// TODO: add an 'except' input, to avoid
+// TODO: add an 'except' input, to avoid same output twice
 function getRandomPlayer(player_list=LIST_OF_PLAYER){
     return player_list[Math.floor(Math.random()*player_list.length)];
 }
