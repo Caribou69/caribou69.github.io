@@ -115,7 +115,7 @@ FORM
     position: absolute;
     width: 700px;
     height: 600px;
-    top: 60%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
