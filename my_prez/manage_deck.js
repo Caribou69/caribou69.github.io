@@ -8,7 +8,7 @@
 // ----------------------------------
 // Div containing all slides
 var deck = document.getElementById("slides_div");
-// Last slide
+// Last section
 var blank_slide = document.getElementById("blank");
 
 // Create new slide
@@ -24,7 +24,7 @@ new_slide.setAttribute('data-state', "somestate");
 // Remove the blank
 blank_slide.remove();
 
-// Begin Slides
+// Build deck
 //----------------------------------------
 console.log("Begin shuffle");
 // add some slides shuffled
@@ -39,4 +39,5 @@ function newslide() {
     console.log("Add new slide");
     deck.appendChild(new_slide);
 }
+
 

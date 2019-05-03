@@ -1,7 +1,5 @@
-# Section 1
+# Let's go !
 
-Yo yo 
+<span name="PLAYER"></span>, you are the new "jbvjhksh".
 
-<span name="PLAYER"></span> and <span name="PLAYER"></span> leads in that domain.
-
-You make <span name='GLOUPS'></span>, for <span name="PLAYER"></span>.
+You shall drink <span name='GLOUPS'></span> shots...
